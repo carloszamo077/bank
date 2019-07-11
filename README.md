@@ -11,9 +11,6 @@ Bank example app
 * [Maven](https://maven.apache.org/install.html)
 * Java 8: Any compliant JVM should work.
   * [Java 8 JDK from Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-  * [Java 8 JDK from IBM (AIX, Linux, z/OS, IBM i)](http://www.ibm.com/developerworks/java/jdk/),
-    or [Download a Liberty server package](https://developer.ibm.com/assets/wasdev/#filter/assetTypeFilters=PRODUCT)
-    that contains the IBM JDK (Windows, Linux)
 
 ### Run
 
