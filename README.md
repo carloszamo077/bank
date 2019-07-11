@@ -5,6 +5,7 @@ Bank example app
 * [Requirements](#requirements)
 * [Run](#run)
 * [Endpoints](#endpoints)
+* [Configuration](#configuration)
 
 ### Requirements
 * [Maven](https://maven.apache.org/install.html)
@@ -25,6 +26,8 @@ Bank example app
 
 1. `java -jar bank-0.0.1-SNAPSHOT.jar`
 
+    * Run dev: java -jar -Dspring.profiles.active=dev target\bank-0.0.1-SNAPSHOT.jar
+
 * Run Spring Boot app using Maven
 
 1. `mvn spring-boot:run`
@@ -38,8 +41,14 @@ Bank example app
 The application exposes the following endpoints:
 * Health endpoint: `<host>:<port>/<contextRoot>/health`
 * Metrics endpoint: `<host>:<port>/<contextRoot>/metrics`
+* Mappings endpoint: `<host>:<port>/<contextRoot>/mappings`
 * Accounts endpoint: `<host>:<port>/<contextRoot>/api/accounts/`
 * Cards endpoint: `<host>:<port>/<contextRoot>/api/cards/`
 * Transfers endpoint: `<host>:<port>/<contextRoot>/api/transfers/`
 * Public endpoint: `<host>:<port>/<contextRoot>/api/public/`
 * Authenticate endpoint: `<host>:<port>/<contextRoot>/api/authenticate?username=carlos&password=carlos`
+
+### Configuration
+
+keytool -genkey -keyalg RSA -alias linkedin -keystore keystore.jks -storepass password -validity 4000 -keysize 2048
+
