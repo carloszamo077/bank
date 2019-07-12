@@ -39,13 +39,9 @@ The application exposes the following endpoints:
 * Cards endpoint: `<host>:<port>/<contextRoot>/api/cards/`
 * Transfers endpoint: `<host>:<port>/<contextRoot>/api/transfers/`
 * Public endpoint: `<host>:<port>/<contextRoot>/api/public/`
-<<<<<<< Updated upstream
-* Authenticate endpoint: `<host>:<port>/<contextRoot>/api/authenticate?username=carlos&password=carlos`
-=======
 * Authenticate endpoint: POST `<host>:<port>/<contextRoot>/api/authenticate?username=carlos&password=carlos`
 
 ### Configuration
 
 keytool -genkey -keyalg RSA -alias linkedin -keystore keystore.jks -storepass password -validity 4000 -keysize 2048
 
->>>>>>> Stashed changes
