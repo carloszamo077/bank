@@ -1,6 +1,7 @@
 package com.carlos.bank.business.service;
 
 import com.carlos.bank.business.domain.BankCard;
+import com.carlos.bank.common.aspect.Loggable;
 import com.carlos.bank.data.entity.Card;
 import com.carlos.bank.data.repository.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ public class CardService {
     }
 
 
+    @Loggable
     public List<BankCard> getAll(){
 
         List<BankCard> bankCardList = new ArrayList<>();
@@ -40,6 +42,7 @@ public class CardService {
         return bankCardList;
     }
 
+    @Loggable
     public BankCard getByCardNumber(String cardNumber){
 
         Card card = this.cardRepository.findByCardNumber(cardNumber);

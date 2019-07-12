@@ -1,6 +1,7 @@
 package com.carlos.bank.business.service;
 
 import com.carlos.bank.business.domain.BankTransfer;
+import com.carlos.bank.common.aspect.Loggable;
 import com.carlos.bank.data.entity.Transfer;
 import com.carlos.bank.data.repository.AccountRepository;
 import com.carlos.bank.data.repository.CardRepository;
@@ -32,6 +33,7 @@ public class TransferService {
         this.transferRepository = transferRepository;
     }
 
+    @Loggable
     public Map<String, String> addTransaction(long accountId,
                                      long accountDestination,
                                      long transactionAmount){
@@ -48,6 +50,7 @@ public class TransferService {
         return map;
     }
 
+    @Loggable
     public List<BankTransfer> getAll(){
         List<BankTransfer> bankTransfers = new ArrayList<>();
         Iterable<Transfer> transfers = this.transferRepository.findAll();
@@ -64,6 +67,7 @@ public class TransferService {
         return bankTransfers;
     }
 
+    @Loggable
     public List<BankTransfer> getTransferByDate(String dateString){
         Date date = this.createDateFromDateString(dateString);
         List<BankTransfer> bankTransfers = new ArrayList<>();

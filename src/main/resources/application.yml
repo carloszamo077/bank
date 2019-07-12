@@ -1,0 +1,30 @@
+management:
+  security:
+    enabled: false
+server:
+  #ssl:
+  #  key-store: classpath:keystore.jks
+   # key-store-password: password
+   # key-store-type: JKS
+   # key-alias: linkedin
+   # key-password: password
+---
+logging:
+  level:
+    root: INFO
+---
+spring:
+  profiles: dev
+server:
+  port: 8080
+---
+spring:
+  profiles: test
+server:
+  port: 9090
+---
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+

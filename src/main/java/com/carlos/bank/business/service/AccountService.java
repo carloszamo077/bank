@@ -1,5 +1,6 @@
 package com.carlos.bank.business.service;
 
+import com.carlos.bank.common.aspect.Loggable;
 import com.carlos.bank.data.entity.Account;
 import com.carlos.bank.data.repository.AccountRepository;
 import com.carlos.bank.data.repository.CardRepository;
@@ -22,6 +23,7 @@ public class AccountService {
         this.cardRepository = cardRepository;
     }
 
+    @Loggable
     public List<BankAccount> getAccountByUser(String userId){
         Iterable<Account> accounts = this.accountRepository.findByUserId(userId);
 
@@ -40,6 +42,7 @@ public class AccountService {
         return bankAccountList;
     }
 
+    @Loggable
     public List<BankAccount> getAll(){
         Iterable<Account> accounts = this.accountRepository.findAll();
 
