@@ -12,18 +12,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/cards")
+@RequestMapping(value = "/api")
 public class CardServiceController {
 
     @Autowired
     private CardService cardService;
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/cards", method = RequestMethod.GET)
     public List<BankCard> getCard(@RequestParam(required=false) String cardNumber){
         List<BankCard> bankCardList =  new ArrayList<>();
         if(null==cardNumber){
             return this.cardService.getAll();
-        }else {
+        } else {
             BankCard bankCard = this.cardService.getByCardNumber(cardNumber);
             bankCardList.add(bankCard);
             return bankCardList;

@@ -23,7 +23,7 @@ public class TransferService {
     private UserRepository userRepository;
     private TransferRepository transferRepository;
 
-    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+    private final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
     @Autowired
     public TransferService(AccountRepository accountRepository, CardRepository cardRepository, UserRepository userRepository, TransferRepository transferRepository) {
@@ -33,21 +33,16 @@ public class TransferService {
         this.transferRepository = transferRepository;
     }
 
-    @Loggable
-    public Map<String, String> addTransaction(long accountId,
-                                     long accountDestination,
-                                     long transactionAmount){
+    public BankTransfer addTransfer(BankTransfer bankTransfer){
         Transfer transfer = new Transfer();
-        transfer.setAccountId(accountId);
-        transfer.setAccountDestination(accountDestination);
-        transfer.setTransferAmount(transactionAmount);
-        transfer.setTransferDate(new java.sql.Date(new Date().getTime()));
+        transfer.setAccountId(bankTransfer.getAccountId());
+        transfer.setAccountDestination(bankTransfer.getAccountDestination());
+        transfer.setTransferAmount(bankTransfer.getTransferAmount());
+        transfer.setTransferDate(new java.sql.Date(bankTransfer.getTransferDate().getTime()));
 
-        this.transferRepository.save(transfer);
+       Transfer transferSaved =  this.transferRepository.save(transfer);
 
-        Map<String, String> map = new HashMap<>();
-        map.put("Status", "200");
-        return map;
+       return bankTransfer;
     }
 
     @Loggable
