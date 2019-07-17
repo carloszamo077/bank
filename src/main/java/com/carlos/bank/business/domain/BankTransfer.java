@@ -1,7 +1,12 @@
 package com.carlos.bank.business.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.Past;
 import java.util.Date;
 
+@ApiModel(description = "All the details about the Transfer")
 public class BankTransfer {
 
     private long transferId;
@@ -12,6 +17,8 @@ public class BankTransfer {
 
     private long accountDestination;
 
+    @ApiModelProperty(notes = "Date can not be in the future")
+    @Past
     private Date transferDate;
 
     public long getTransferId() {

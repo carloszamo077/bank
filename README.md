@@ -33,6 +33,8 @@ Bank example app
 ### Endpoints
 
 The application exposes the following endpoints:
+* Swagger endpoint: `<host>:<port>/<contextRoot>/v2/api-docs`
+* Actuator endpoint: `<host>:<port>/<contextRoot>/actuator`
 * Health endpoint: `<host>:<port>/<contextRoot>/health`
 * Metrics endpoint: `<host>:<port>/<contextRoot>/metrics`
 * Accounts endpoint: `<host>:<port>/<contextRoot>/api/accounts/`
