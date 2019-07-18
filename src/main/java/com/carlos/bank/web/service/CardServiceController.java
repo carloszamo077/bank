@@ -20,24 +20,12 @@ public class CardServiceController {
     @Autowired
     private CardService cardService;
 
-    @RequestMapping(value = "/cards", method = RequestMethod.GET)
+    @RequestMapping(value = "/v1/cards", method = RequestMethod.GET)
     public List<BankCard> getAllCards(){
             return this.cardService.getAll();
     }
 
-    /*@RequestMapping(value = "/cards/all", method = RequestMethod.GET)
-    public List<BankCard> getCards(@RequestParam(required=false) String cardNumber){
-        List<BankCard> bankCardList =  new ArrayList<>();
-        if(null==cardNumber){
-            return this.cardService.getAll();
-        } else {
-            BankCard bankCard = this.cardService.getByCardNumber(cardNumber);
-            bankCardList.add(bankCard);
-            return bankCardList;
-        }
-    }*/
-
-    @RequestMapping(method = RequestMethod.GET, value = "/cards/{cardNumber}")
+    @RequestMapping(method = RequestMethod.GET, value = "/v1/cards/{cardNumber}")
     public Resource<BankCard> getCard(@PathVariable String cardNumber){
         BankCard bankCard = this.cardService.getByCardNumber(cardNumber);
 
@@ -49,5 +37,17 @@ public class CardServiceController {
                     linkTo(methodOn(CardServiceController.class).getAllCards());
             resource.add(linkTo.withRel("all-cards"));
         return resource;
+    }
+
+    @RequestMapping(value = "/v2/cards/", method = RequestMethod.GET)
+    public List<BankCard> getCards(@RequestParam(required=false) String cardNumber){
+        List<BankCard> bankCardList =  new ArrayList<>();
+        if(null==cardNumber){
+            return this.cardService.getAll();
+        } else {
+            BankCard bankCard = this.cardService.getByCardNumber(cardNumber);
+            bankCardList.add(bankCard);
+            return bankCardList;
+        }
     }
 }

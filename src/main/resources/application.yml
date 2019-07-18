@@ -1,10 +1,6 @@
 management:
   security:
     enabled: false
-  endpoints:
-    web:
-      exposure:
-        include: *
 ---
 server:
   #ssl:
@@ -32,10 +28,4 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
-  messages:
-    basename: messages
-  jackson:
-    serialization:
-      write-dates-as-timestamps: false
-
 ---

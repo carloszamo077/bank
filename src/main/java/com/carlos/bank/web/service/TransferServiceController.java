@@ -20,7 +20,7 @@ public class TransferServiceController {
     @Autowired
     private TransferService transferService;
 
-    @RequestMapping(value = "/transfers", method = RequestMethod.GET)
+    @RequestMapping(value = "/v2/transfers", method = RequestMethod.GET)
     public List<BankTransfer> getTransfers(@RequestParam(required=false) String date){
         List<BankTransfer> bankTransferList =  new ArrayList<>();
         if(null==date){
@@ -30,13 +30,13 @@ public class TransferServiceController {
         }
     }
 
-    @GetMapping("/transfers/{date}")
+    @RequestMapping(value = "/v1/transfers/{date}", method = RequestMethod.GET)
     public List<BankTransfer> getTransfer(@PathVariable String date){
         List<BankTransfer> bankTransferList =  this.transferService.getTransferByDate(date);
         return bankTransferList;
     }
 
-    @PostMapping("/transfers")
+    @RequestMapping(value = "/v1/transfers", method = RequestMethod.POST)
     public ResponseEntity<Object> createTransfer(@RequestBody BankTransfer bankTransfer){
         BankTransfer transfer = this.transferService.addTransfer(bankTransfer);
 

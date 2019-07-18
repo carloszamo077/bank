@@ -21,21 +21,12 @@ public class AccountServiceController {
     @Autowired
     private AccountService accountService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/accounts")
+    @RequestMapping(method = RequestMethod.GET, value = "/v1/accounts")
     public List<BankAccount> getAllAccounts(){
             return  this.accountService.getAll();
     }
 
-    /*@RequestMapping(method = RequestMethod.GET, value = "/accounts")
-    public List<BankAccount> getAccount(@RequestParam(required=false) String userId){
-        if(null == userId){
-            return  this.accountService.getAll();
-        }else {
-            return this.accountService.getAccountByUser(userId);
-        }
-    }*/
-
-    @RequestMapping(method = RequestMethod.GET, value = "/accounts/{userId}")
+    @RequestMapping(method = RequestMethod.GET, value = "/v1/accounts/{userId}")
     public List<Resource> getAccounts(@PathVariable String userId){
         Iterable<BankAccount> bankAccountList = this.accountService.getAccountByUser(userId);
             if(bankAccountList == null){
@@ -52,5 +43,14 @@ public class AccountServiceController {
             });
 
         return resourceList;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/v2/accounts")
+    public List<BankAccount> getAccount(@RequestParam(required=false) String userId){
+        if(null == userId){
+            return  this.accountService.getAll();
+        }else {
+            return this.accountService.getAccountByUser(userId);
+        }
     }
 }
