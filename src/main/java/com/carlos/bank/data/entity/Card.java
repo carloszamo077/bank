@@ -1,6 +1,8 @@
 package com.carlos.bank.data.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -13,9 +15,6 @@ public class Card {
     @Column(name = "CARD_ID")
     private long cardId;
 
-    @Column(name = "ACCOUNT_ID")
-    private long accountId;
-
     @Column(name = "CARD_NAME")
     private String cardName;
 
@@ -25,6 +24,18 @@ public class Card {
     @Column(name = "CARD_DATE")
     private Date cardDate;
 
+    /*@ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Account account;
+
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }*/
 
     public long getCardId() {
         return cardId;
@@ -32,14 +43,6 @@ public class Card {
 
     public void setCardId(long cardId) {
         this.cardId = cardId;
-    }
-
-    public long getAccountID() {
-        return accountId;
-    }
-
-    public void setAccountID(long accountID) {
-        this.accountId = accountID;
     }
 
     public String getCardName() {

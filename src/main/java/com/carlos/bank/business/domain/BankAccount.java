@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @ApiModel(description = "All the details about the Account")
 public class BankAccount {
@@ -25,6 +26,16 @@ public class BankAccount {
     @ApiModelProperty(notes = "Date can not be in the future")
     @Past
     private Date accountDate;
+
+    private List<BankCard> cardtList;
+
+    public List<BankCard> getCardtList() {
+        return cardtList;
+    }
+
+    public void setCardtList(List<BankCard> cardtList) {
+        this.cardtList = cardtList;
+    }
 
     public long getAccountId() {
         return accountId;

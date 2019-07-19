@@ -31,7 +31,7 @@ public class AccountService {
 
         accounts.forEach(account ->{
             BankAccount bankAccount = new BankAccount();
-            bankAccount.setUserId(account.getUserId());
+            bankAccount.setUserId(account.getUser().getId());
             bankAccount.setAccountId(account.getAccountId());
             bankAccount.setAccountBalance(account.getAccountBalance());
             bankAccount.setAccountName(account.getAccountName());
@@ -50,7 +50,7 @@ public class AccountService {
 
         accounts.forEach(account ->{
             BankAccount bankAccount = new BankAccount();
-            bankAccount.setUserId(account.getUserId());
+            bankAccount.setUserId(account.getUser().getId());
             bankAccount.setAccountId(account.getAccountId());
             bankAccount.setAccountBalance(account.getAccountBalance());
             bankAccount.setAccountName(account.getAccountName());

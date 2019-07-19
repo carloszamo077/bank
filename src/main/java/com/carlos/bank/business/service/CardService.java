@@ -35,7 +35,7 @@ public class CardService {
             bankCard.setCardId(card.getCardId());
             bankCard.setCardName(card.getCardName());
             bankCard.setCardNumber(card.getCardNumber());
-            bankCard.setAccountId(card.getAccountID());
+            //bankCard.setAccountId(card.getAccount().getAccountId());
             bankCardList.add(bankCard);
         });
 
@@ -51,7 +51,7 @@ public class CardService {
             bankCard.setCardId(card.getCardId());
             bankCard.setCardName(card.getCardName());
             bankCard.setCardNumber(card.getCardNumber());
-            bankCard.setAccountId(card.getAccountID());
+            //bankCard.setAccountId(card.getAccount().getAccountId());
 
         return bankCard;
     }

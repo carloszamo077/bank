@@ -5,6 +5,7 @@ Bank example app
 * [Requirements](#requirements)
 * [Run](#run)
 * [Endpoints](#endpoints)
+* [H2](#h2)
 
 ### Requirements
 * [Maven](https://maven.apache.org/install.html)
@@ -33,13 +34,14 @@ Bank example app
 ### Endpoints
 
 The application exposes the following endpoints:
+* H2 Console endpoint: `<host>:<port>/<contextRoot>/h2-console`
 * Swagger endpoint: `<host>:<port>/<contextRoot>/v2/api-docs`
 * Actuator endpoint: `<host>:<port>/<contextRoot>/actuator`
 * Health endpoint: `<host>:<port>/<contextRoot>/health`
 * Metrics endpoint: `<host>:<port>/<contextRoot>/metrics`
-* Accounts endpoint: `<host>:<port>/<contextRoot>/api/accounts/`
-* Cards endpoint: `<host>:<port>/<contextRoot>/api/cards/`
-* Transfers endpoint: `<host>:<port>/<contextRoot>/api/transfers/`
+* Accounts endpoint: `<host>:<port>/<contextRoot>/v1/api/accounts/`
+* Cards endpoint: `<host>:<port>/<contextRoot>/v1/api/cards/`
+* Transfers endpoint: `<host>:<port>/<contextRoot>/v1/api/transfers/`
 * Public endpoint: `<host>:<port>/<contextRoot>/api/public/`
 * Authenticate endpoint: POST `<host>:<port>/<contextRoot>/api/authenticate?username=carlos&password=carlos`
 
@@ -47,3 +49,7 @@ The application exposes the following endpoints:
 
 keytool -genkey -keyalg RSA -alias linkedin -keystore keystore.jks -storepass password -validity 4000 -keysize 2048
 
+### H2
+
+`Generic H2 (Embedded)`
+`jdbc:h2:mem:testdb`

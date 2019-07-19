@@ -3,6 +3,7 @@ package com.carlos.bank.data.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "USERS")
@@ -39,6 +40,17 @@ public class User {
 
     @Column(name = "USER_DATE")
     private Date userDate;
+
+    @OneToMany(mappedBy = "user")
+    private List<Account> accountList;
+
+    public List<Account> getAccountList() {
+        return accountList;
+    }
+
+    public void setAccountList(List<Account> accountList) {
+        this.accountList = accountList;
+    }
 
     public long getUserId() {
         return userId;
