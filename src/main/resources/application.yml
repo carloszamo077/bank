@@ -24,8 +24,8 @@ spring:
 server:
   port: 9090
 ---
-#spring:
- # jpa:
-  #  hibernate:
-   #   ddl-auto: none
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
 ---

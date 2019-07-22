@@ -28,43 +28,19 @@ public class Account {
     @Column(name = "DATETIME")
     private Date dateTime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
-    private User user;
-
-    @OneToMany(mappedBy = "account")
-    private List<Card> cardList;
-
-    @OneToMany(mappedBy = "accountId")
-    private List<Transfer> transferList;
-
+    @Column(name = "USER_ID")
+    private String userId;
 
     public Account(){
-        
+
     }
 
-    public List<Card> getCardList() {
-        return cardList;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setCardList(List<Card> cardList) {
-        this.cardList = cardList;
-    }
-
-    public List<Transfer> getTransferList() {
-        return transferList;
-    }
-
-    public void setTransferList(List<Transfer> transferList) {
-        this.transferList = transferList;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public long getId() {

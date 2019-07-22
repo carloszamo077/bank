@@ -20,12 +20,11 @@ public class Transfer {
     @Column(name = "DATETIME")
     private Date dateTime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
-    private Account accountId;
+    @Column(name = "ACCOUNT_ID")
+    private String accountId;
 
     @Column(name = "ACCOUNT_DESTINATION")
-    private long accountDestination;
+    private String accountDestination;
 
     public Transfer(){}
 
@@ -53,19 +52,19 @@ public class Transfer {
         this.dateTime = dateTime;
     }
 
-    public Account getAccountId() {
+    public String getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(Account accountId) {
+    public void setAccountId(String accountId) {
         this.accountId = accountId;
     }
 
-    public long getAccountDestination() {
+    public String getAccountDestination() {
         return accountDestination;
     }
 
-    public void setAccountDestination(long accountDestination) {
+    public void setAccountDestination(String accountDestination) {
         this.accountDestination = accountDestination;
     }
 }

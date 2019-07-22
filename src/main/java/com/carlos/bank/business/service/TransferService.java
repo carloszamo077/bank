@@ -61,7 +61,7 @@ public class TransferService {
         return bankTransfers;
     }
 
-    @Loggable
+    /*@Loggable
     public List<BankTransfer> getTransferByDate(String dateString){
         Date date = this.createDateFromDateString(dateString);
         List<BankTransfer> bankTransfers = new ArrayList<>();
@@ -69,14 +69,14 @@ public class TransferService {
 
         transfers.forEach(transfer -> {
             BankTransfer bankTransfer = new BankTransfer();
-            //bankTransfer.setAccountId(); Find the account
+            bankTransfer.setAccountId(); Find the account
             bankTransfer.setAccountDestination(transfer.getAccountDestination());
             bankTransfer.setAmount(transfer.getAmount());
             bankTransfer.setDateTime(transfer.getDateTime());
             bankTransfers.add(bankTransfer);
         });
         return bankTransfers;
-    }
+    }*/
 
 
 

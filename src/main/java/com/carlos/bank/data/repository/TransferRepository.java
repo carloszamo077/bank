@@ -12,7 +12,7 @@ public interface TransferRepository extends CrudRepository<Transfer, Long> {
 
     List<Transfer> findAll();
 
-    List<Transfer> findByTransferDate(Date date);
+    List<Transfer> findByDateTime(Date date);
 
     Transfer save(Transfer transfer);
 

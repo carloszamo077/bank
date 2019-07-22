@@ -25,7 +25,7 @@ public class CardServiceController {
             return this.cardService.getAll();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/v1/cards/{cardNumber}")
+    /*@RequestMapping(method = RequestMethod.GET, value = "/v1/cards/{cardNumber}")
     public Resource<BankCard> getCard(@PathVariable String cardNumber){
         BankCard bankCard = this.cardService.getByCardNumber(cardNumber);
 
@@ -49,5 +49,5 @@ public class CardServiceController {
             bankCardList.add(bankCard);
             return bankCardList;
         }
-    }
+    }*/
 }

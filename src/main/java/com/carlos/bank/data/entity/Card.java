@@ -24,18 +24,17 @@ public class Card {
     @Column(name = "DATETIME")
     private Date dateTime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
-    private Account account;
+    @Column(name = "ACCOUNT_ID")
+    private String accountId;
 
     public Card(){}
 
-    public Account getAccount() {
-        return account;
+    public String getAccountId() {
+        return accountId;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     public long getId() {

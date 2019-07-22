@@ -1,11 +1,13 @@
 package com.carlos.bank.business.domain;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import io.swagger.annotations.ApiModel;
 
 import java.util.Date;
 import java.util.List;
 
 @ApiModel(description = "All the details about the User")
+@JsonFilter(value = "BankUserFilter")
 public class BankUser {
 
     private String userId;
@@ -27,7 +29,6 @@ public class BankUser {
     private Date dateTime;
 
     private List<BankAccount> accountList;
-
 
     public BankUser(){}
 

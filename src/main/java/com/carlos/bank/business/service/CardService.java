@@ -41,7 +41,7 @@ public class CardService {
         return bankCardList;
     }
 
-    @Loggable
+    /*@Loggable
     public BankCard getByCardNumber(String cardNumber){
 
         Card card = this.cardRepository.findByCardNumber(cardNumber);
@@ -49,8 +49,8 @@ public class CardService {
         bankCard.setDateTime(card.getDateTime());
         bankCard.setCardId(card.getCardId());
         bankCard.setName(card.getName());
-        //bankCard.setAccountId(card.getAccount().getAccountId());
+        bankCard.setAccountId(card.getAccount().getAccountId());
 
         return bankCard;
-    }
+    }*/
 }

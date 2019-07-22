@@ -1,8 +1,11 @@
 package com.carlos.bank.web.service;
 
 import com.carlos.bank.business.domain.BankAccount;
+import com.carlos.bank.business.domain.BankUser;
 import com.carlos.bank.business.exceptions.AccountNotFoundException;
+import com.carlos.bank.business.exceptions.UserNotFoundException;
 import com.carlos.bank.business.service.AccountService;
+import com.carlos.bank.business.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
@@ -21,10 +24,25 @@ public class AccountServiceController {
     @Autowired
     private AccountService accountService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(method = RequestMethod.GET, value = "/v1/accounts")
     public List<BankAccount> getAllAccounts(){
             return  this.accountService.getAll();
     }
+
+
+    @RequestMapping(method = RequestMethod.GET, value = "/v1/users/{userId}/accounts")
+    public List<BankAccount> getAllUserAccounts(@PathVariable String userId){
+        BankUser user = this.userService.getByUserIdWithAccounts(userId);
+        if(user == null){
+            throw new UserNotFoundException("id-" + userId);
+        }
+
+        return user.getAccountList();
+    }
+
 
     @RequestMapping(method = RequestMethod.GET, value = "/v1/accounts/{userId}")
     public List<Resource> getAccounts(@PathVariable String userId){

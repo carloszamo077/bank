@@ -41,19 +41,7 @@ public class User {
     @Column(name = "DATETIME")
     private Date dateTime;
 
-    @OneToMany(mappedBy = "user")
-    private List<Account> accountList;
-
     public User(){}
-
-    public List<Account> getAccountList() {
-        return accountList;
-    }
-
-    public void setAccountList(List<Account> accountList) {
-        this.accountList = accountList;
-    }
-
 
     public String getFirstName() {
         return firstName;

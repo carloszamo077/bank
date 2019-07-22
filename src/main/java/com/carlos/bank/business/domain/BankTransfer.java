@@ -17,7 +17,7 @@ public class BankTransfer {
 
     private BankAccount accountId;
 
-    private long accountDestination;
+    private String accountDestination;
 
     public BankTransfer(){}
 
@@ -45,11 +45,11 @@ public class BankTransfer {
         this.accountId = accountId;
     }
 
-    public long getAccountDestination() {
+    public String getAccountDestination() {
         return accountDestination;
     }
 
-    public void setAccountDestination(long accountDestination) {
+    public void setAccountDestination(String accountDestination) {
         this.accountDestination = accountDestination;
     }
 }
