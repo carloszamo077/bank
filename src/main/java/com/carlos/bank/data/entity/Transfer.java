@@ -1,5 +1,7 @@
 package com.carlos.bank.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -9,43 +11,54 @@ public class Transfer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "TRANSFER_ID")
-    private long transferId;
+    @Column(name = "ID")
+    private long id;
 
-    @Column(name = "ACCOUNT_ID")
-    private long accountId;
+    @Column(name = "AMOUNT")
+    private long amount;
 
-    @Column(name = "TRANSFER_AMOUNT")
-    private long transferAmount;
+    @Column(name = "DATETIME")
+    private Date dateTime;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Account accountId;
 
     @Column(name = "ACCOUNT_DESTINATION")
     private long accountDestination;
 
-    @Column(name = "TRANSFER_DATE")
-    private Date transferDate;
+    public Transfer(){}
 
-    public long getTransferId() {
-        return transferId;
+    public long getId() {
+        return id;
     }
 
-    public void setTransferId(long transferId) {
-        this.transferId = transferId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public long getAccountId() {
+    public long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(long amount) {
+        this.amount = amount;
+    }
+
+    public Date getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public Account getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(long accountId) {
+    public void setAccountId(Account accountId) {
         this.accountId = accountId;
-    }
-
-    public long getTransferAmount() {
-        return transferAmount;
-    }
-
-    public void setTransferAmount(long transferAmount) {
-        this.transferAmount = transferAmount;
     }
 
     public long getAccountDestination() {
@@ -54,13 +67,5 @@ public class Transfer {
 
     public void setAccountDestination(long accountDestination) {
         this.accountDestination = accountDestination;
-    }
-
-    public Date getTransferDate() {
-        return transferDate;
-    }
-
-    public void setTransferDate(Date transferDate) {
-        this.transferDate = transferDate;
     }
 }

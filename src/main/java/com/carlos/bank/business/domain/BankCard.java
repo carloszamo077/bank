@@ -10,55 +10,45 @@ import java.util.Date;
 @ApiModel(description = "All the details about the Card")
 public class BankCard {
 
-    private long cardId;
+    private String cardId;
 
-    private long accountId;
+    private String name;
 
-    private String cardName;
+    private Date dateTime;
 
-    private String cardNumber;
+    private BankAccount account;
 
-    @ApiModelProperty(notes = "Date can not be in the future")
-    @Past
-    private Date cardDate;
+    public BankCard(){}
 
-    public long getCardId() {
+    public String getCardId() {
         return cardId;
     }
 
-    public void setCardId(long cardId) {
+    public void setCardId(String cardId) {
         this.cardId = cardId;
     }
 
-    public long getAccountId() {
-        return accountId;
+    public String getName() {
+        return name;
     }
 
-    public void setAccountId(long accountId) {
-        this.accountId = accountId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCardName() {
-        return cardName;
+    public Date getDateTime() {
+        return dateTime;
     }
 
-    public void setCardName(String cardName) {
-        this.cardName = cardName;
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
     }
 
-    public String getCardNumber() {
-        return cardNumber;
+    public BankAccount getAccount() {
+        return account;
     }
 
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
-    }
-
-    public Date getCardDate() {
-        return cardDate;
-    }
-
-    public void setCardDate(Date cardDate) {
-        this.cardDate = cardDate;
+    public void setAccount(BankAccount account) {
+        this.account = account;
     }
 }

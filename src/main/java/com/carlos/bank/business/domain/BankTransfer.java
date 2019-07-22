@@ -9,40 +9,40 @@ import java.util.Date;
 @ApiModel(description = "All the details about the Transfer")
 public class BankTransfer {
 
-    private long transferId;
-
-    private long accountId;
-
-    private long transferAmount;
-
-    private long accountDestination;
+    private long amount;
 
     @ApiModelProperty(notes = "Date can not be in the future")
     @Past
-    private Date transferDate;
+    private Date dateTime;
 
-    public long getTransferId() {
-        return transferId;
+    private BankAccount accountId;
+
+    private long accountDestination;
+
+    public BankTransfer(){}
+
+    public long getAmount() {
+        return amount;
     }
 
-    public void setTransferId(long transferId) {
-        this.transferId = transferId;
+    public void setAmount(long amount) {
+        this.amount = amount;
     }
 
-    public long getAccountId() {
+    public Date getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public BankAccount getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(long accountId) {
+    public void setAccountId(BankAccount accountId) {
         this.accountId = accountId;
-    }
-
-    public long getTransferAmount() {
-        return transferAmount;
-    }
-
-    public void setTransferAmount(long transferAmount) {
-        this.transferAmount = transferAmount;
     }
 
     public long getAccountDestination() {
@@ -51,13 +51,5 @@ public class BankTransfer {
 
     public void setAccountDestination(long accountDestination) {
         this.accountDestination = accountDestination;
-    }
-
-    public Date getTransferDate() {
-        return transferDate;
-    }
-
-    public void setTransferDate(Date transferDate) {
-        this.transferDate = transferDate;
     }
 }

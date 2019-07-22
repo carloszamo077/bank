@@ -43,7 +43,7 @@ public class TransferServiceController {
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{date}")
-                .buildAndExpand(transfer.getTransferDate()).toUri();
+                .buildAndExpand(transfer.getDateTime()).toUri();
 
         return ResponseEntity.created(location).build();
     }

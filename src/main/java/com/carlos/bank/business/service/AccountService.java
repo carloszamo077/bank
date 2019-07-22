@@ -31,11 +31,10 @@ public class AccountService {
 
         accounts.forEach(account ->{
             BankAccount bankAccount = new BankAccount();
-            bankAccount.setUserId(account.getUser().getId());
             bankAccount.setAccountId(account.getAccountId());
-            bankAccount.setAccountBalance(account.getAccountBalance());
-            bankAccount.setAccountName(account.getAccountName());
-            bankAccount.setAccountDate(account.getAccountDate());
+            bankAccount.setBalance(account.getBalance());
+            bankAccount.setName(account.getName());
+            bankAccount.setDateTime(account.getDateTime());
 
             bankAccountList.add(bankAccount);
         });
@@ -50,12 +49,10 @@ public class AccountService {
 
         accounts.forEach(account ->{
             BankAccount bankAccount = new BankAccount();
-            bankAccount.setUserId(account.getUser().getId());
             bankAccount.setAccountId(account.getAccountId());
-            bankAccount.setAccountBalance(account.getAccountBalance());
-            bankAccount.setAccountName(account.getAccountName());
-            bankAccount.setAccountDate(account.getAccountDate());
-
+            bankAccount.setBalance(account.getBalance());
+            bankAccount.setName(account.getName());
+            bankAccount.setDateTime(account.getDateTime());
             bankAccountList.add(bankAccount);
         });
         return bankAccountList;

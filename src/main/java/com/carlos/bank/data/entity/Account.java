@@ -13,32 +13,51 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
+    private long id;
+
     @Column(name = "ACCOUNT_ID")
-    private long accountId;
+    private String accountId;
 
-    @Column(name = "ACCOUNT_NAME")
-    private String accountName;
+    @Column(name = "NAME")
+    private String name;
 
-    @Column(name = "ACCOUNT_BALANCE")
-    private long accountBalance;
+    @Column(name = "BALANCE")
+    private long balance;
 
-    @Column(name = "ACCOUNT_DATE")
-    private Date accountDate;
+    @Column(name = "DATETIME")
+    private Date dateTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     private User user;
 
-    /*@OneToMany(mappedBy = "account")
-    private List<Card> cardtList;
+    @OneToMany(mappedBy = "account")
+    private List<Card> cardList;
 
-    public List<Card> getCardtList() {
-        return cardtList;
+    @OneToMany(mappedBy = "accountId")
+    private List<Transfer> transferList;
+
+
+    public Account(){
+        
     }
 
-    public void setCardtList(List<Card> cardtList) {
-        this.cardtList = cardtList;
-    }*/
+    public List<Card> getCardList() {
+        return cardList;
+    }
+
+    public void setCardList(List<Card> cardList) {
+        this.cardList = cardList;
+    }
+
+    public List<Transfer> getTransferList() {
+        return transferList;
+    }
+
+    public void setTransferList(List<Transfer> transferList) {
+        this.transferList = transferList;
+    }
 
     public User getUser() {
         return user;
@@ -48,35 +67,43 @@ public class Account {
         this.user = user;
     }
 
-    public long getAccountId() {
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(long accountId) {
+    public void setAccountId(String accountId) {
         this.accountId = accountId;
     }
 
-    public String getAccountName() {
-        return accountName;
+    public String getName() {
+        return name;
     }
 
-    public void setAccountName(String accountName) {
-        this.accountName = accountName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public long getAccountBalance() {
-        return accountBalance;
+    public long getBalance() {
+        return balance;
     }
 
-    public void setAccountBalance(long accountBalance) {
-        this.accountBalance = accountBalance;
+    public void setBalance(long balance) {
+        this.balance = balance;
     }
 
-    public Date getAccountDate() {
-        return accountDate;
+    public Date getDateTime() {
+        return dateTime;
     }
 
-    public void setAccountDate(Date accountDate) {
-        this.accountDate = accountDate;
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
     }
 }

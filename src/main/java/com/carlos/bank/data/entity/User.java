@@ -6,16 +6,16 @@ import java.sql.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "USERS")
+@Table(name = "USER")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "USER_ID")
-    private long userId;
-
     @Column(name = "ID")
-    private String id;
+    private long id;
+
+    @Column(name = "USER_ID")
+    private String userId;
 
     @Column(name="FIRST_NAME")
     private String firstName;
@@ -38,11 +38,13 @@ public class User {
     @Column(name="PHONE_NUMBER")
     private String phoneNumber;
 
-    @Column(name = "USER_DATE")
-    private Date userDate;
+    @Column(name = "DATETIME")
+    private Date dateTime;
 
     @OneToMany(mappedBy = "user")
     private List<Account> accountList;
+
+    public User(){}
 
     public List<Account> getAccountList() {
         return accountList;
@@ -52,13 +54,6 @@ public class User {
         this.accountList = accountList;
     }
 
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -116,19 +111,27 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Date getUserDate() {
-        return userDate;
-    }
-
-    public void setUserDate(Date userDate) {
-        this.userDate = userDate;
-    }
-
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public Date getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
     }
 }

@@ -35,10 +35,10 @@ public class TransferService {
 
     public BankTransfer addTransfer(BankTransfer bankTransfer){
         Transfer transfer = new Transfer();
-        transfer.setAccountId(bankTransfer.getAccountId());
+        //transfer.setAccountId(); Find the account
         transfer.setAccountDestination(bankTransfer.getAccountDestination());
-        transfer.setTransferAmount(bankTransfer.getTransferAmount());
-        transfer.setTransferDate(new java.sql.Date(bankTransfer.getTransferDate().getTime()));
+        transfer.setAmount(bankTransfer.getAmount());
+        transfer.setDateTime(new java.sql.Date(bankTransfer.getDateTime().getTime()));
 
        Transfer transferSaved =  this.transferRepository.save(transfer);
 
@@ -52,11 +52,10 @@ public class TransferService {
 
         transfers.forEach(transfer -> {
             BankTransfer bankTransfer = new BankTransfer();
-            bankTransfer.setTransferId(transfer.getTransferId());
-            bankTransfer.setAccountId(transfer.getAccountId());
+            //bankTransfer.setAccountId(); Find the account
             bankTransfer.setAccountDestination(transfer.getAccountDestination());
-            bankTransfer.setTransferAmount(transfer.getTransferAmount());
-            bankTransfer.setTransferDate(transfer.getTransferDate());
+            bankTransfer.setAmount(transfer.getAmount());
+            bankTransfer.setDateTime(transfer.getDateTime());
             bankTransfers.add(bankTransfer);
         });
         return bankTransfers;
@@ -70,11 +69,10 @@ public class TransferService {
 
         transfers.forEach(transfer -> {
             BankTransfer bankTransfer = new BankTransfer();
-            bankTransfer.setTransferId(transfer.getTransferId());
-            bankTransfer.setAccountId(transfer.getAccountId());
+            //bankTransfer.setAccountId(); Find the account
             bankTransfer.setAccountDestination(transfer.getAccountDestination());
-            bankTransfer.setTransferAmount(transfer.getTransferAmount());
-            bankTransfer.setTransferDate(transfer.getTransferDate());
+            bankTransfer.setAmount(transfer.getAmount());
+            bankTransfer.setDateTime(transfer.getDateTime());
             bankTransfers.add(bankTransfer);
         });
         return bankTransfers;

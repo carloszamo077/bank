@@ -11,69 +11,71 @@ import java.util.List;
 @ApiModel(description = "All the details about the Account")
 public class BankAccount {
 
-    private long accountId;
+    private String accountId;
 
     @ApiModelProperty(notes = "User ID should have 9 characters")
     @Size(min=9, max = 9, message = "User ID should have 9 characters")
-    private String userId;
+    private String name;
 
-    @ApiModelProperty(notes = "Account name should have 2 characters")
+    //@ApiModelProperty(notes = "Account name should have 2 characters")
     @Size(min=2, message = "Account name should have 2 characters")
-    private String accountName;
-
-    private long accountBalance;
+    private long balance;
 
     @ApiModelProperty(notes = "Date can not be in the future")
     @Past
-    private Date accountDate;
+    private Date dateTime;
 
-    private List<BankCard> cardtList;
+    private List<BankCard> cardList;
 
-    public List<BankCard> getCardtList() {
-        return cardtList;
-    }
+    private List<BankTransfer> transferList;
 
-    public void setCardtList(List<BankCard> cardtList) {
-        this.cardtList = cardtList;
-    }
+    public BankAccount(){}
 
-    public long getAccountId() {
+    public String getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(long accountId) {
+    public void setAccountId(String accountId) {
         this.accountId = accountId;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getName() {
+        return name;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getAccountName() {
-        return accountName;
+    public long getBalance() {
+        return balance;
     }
 
-    public void setAccountName(String accountName) {
-        this.accountName = accountName;
+    public void setBalance(long balance) {
+        this.balance = balance;
     }
 
-    public long getAccountBalance() {
-        return accountBalance;
+    public Date getDateTime() {
+        return dateTime;
     }
 
-    public void setAccountBalance(long accountBalance) {
-        this.accountBalance = accountBalance;
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
     }
 
-    public Date getAccountDate() {
-        return accountDate;
+    public List<BankCard> getCardList() {
+        return cardList;
     }
 
-    public void setAccountDate(Date accountDate) {
-        this.accountDate = accountDate;
+    public void setCardList(List<BankCard> cardList) {
+        this.cardList = cardList;
+    }
+
+    public List<BankTransfer> getTransferList() {
+        return transferList;
+    }
+
+    public void setTransferList(List<BankTransfer> transferList) {
+        this.transferList = transferList;
     }
 }

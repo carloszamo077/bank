@@ -31,10 +31,9 @@ public class CardService {
 
         cards.forEach(card -> {
             BankCard bankCard = new BankCard();
-            bankCard.setCardDate(card.getCardDate());
+            bankCard.setDateTime(card.getDateTime());
             bankCard.setCardId(card.getCardId());
-            bankCard.setCardName(card.getCardName());
-            bankCard.setCardNumber(card.getCardNumber());
+            bankCard.setName(card.getName());
             //bankCard.setAccountId(card.getAccount().getAccountId());
             bankCardList.add(bankCard);
         });
@@ -46,12 +45,11 @@ public class CardService {
     public BankCard getByCardNumber(String cardNumber){
 
         Card card = this.cardRepository.findByCardNumber(cardNumber);
-            BankCard bankCard = new BankCard();
-            bankCard.setCardDate(card.getCardDate());
-            bankCard.setCardId(card.getCardId());
-            bankCard.setCardName(card.getCardName());
-            bankCard.setCardNumber(card.getCardNumber());
-            //bankCard.setAccountId(card.getAccount().getAccountId());
+        BankCard bankCard = new BankCard();
+        bankCard.setDateTime(card.getDateTime());
+        bankCard.setCardId(card.getCardId());
+        bankCard.setName(card.getName());
+        //bankCard.setAccountId(card.getAccount().getAccountId());
 
         return bankCard;
     }
