@@ -1,5 +1,6 @@
 package com.carlos.bank.business.domain;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -7,6 +8,7 @@ import javax.validation.constraints.Past;
 import java.util.Date;
 
 @ApiModel(description = "All the details about the Transfer")
+@JsonFilter(value = "BankTransferFilter")
 public class BankTransfer {
 
     private long amount;

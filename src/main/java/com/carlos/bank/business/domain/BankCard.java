@@ -1,6 +1,7 @@
 package com.carlos.bank.business.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -8,15 +9,18 @@ import javax.validation.constraints.Past;
 import java.util.Date;
 
 @ApiModel(description = "All the details about the Card")
+@JsonFilter(value = "BankCardFilter")
 public class BankCard {
 
     private String cardId;
 
     private String name;
 
+    @ApiModelProperty(notes = "Date can not be in the future")
+    @Past
     private Date dateTime;
 
-    private BankAccount account;
+    private String accountId;
 
     public BankCard(){}
 
@@ -44,11 +48,11 @@ public class BankCard {
         this.dateTime = dateTime;
     }
 
-    public BankAccount getAccount() {
-        return account;
+    public String getAccountId() {
+        return accountId;
     }
 
-    public void setAccount(BankAccount account) {
-        this.account = account;
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 }

@@ -9,8 +9,10 @@ import java.util.List;
 @Repository
 public interface CardRepository extends CrudRepository<Card, Long> {
 
+    List<Card> findAll();
+
     List<Card> findByCardId(String accountId);
 
-    List<Card> findAll();
+    List<Card> findByAccountId(String accountId);
 
 }

@@ -2,7 +2,9 @@ package com.carlos.bank.business.domain;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.Past;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +28,8 @@ public class BankUser {
 
     private String phoneNumber;
 
+    @ApiModelProperty(notes = "Date can not be in the future")
+    @Past
     private Date dateTime;
 
     private List<BankAccount> accountList;

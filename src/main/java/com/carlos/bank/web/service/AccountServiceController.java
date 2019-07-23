@@ -1,14 +1,19 @@
 package com.carlos.bank.web.service;
 
+import com.carlos.bank.business.constants.AppConstants;
 import com.carlos.bank.business.domain.BankAccount;
 import com.carlos.bank.business.domain.BankUser;
 import com.carlos.bank.business.exceptions.AccountNotFoundException;
 import com.carlos.bank.business.exceptions.UserNotFoundException;
 import com.carlos.bank.business.service.AccountService;
 import com.carlos.bank.business.service.UserService;
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -33,14 +38,25 @@ public class AccountServiceController {
     }
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/v1/users/{userId}/accounts")
-    public List<BankAccount> getAllUserAccounts(@PathVariable String userId){
-        BankUser user = this.userService.getByUserIdWithAccounts(userId);
+    @RequestMapping(method = RequestMethod.GET, value = "/v1/users/{userId}/accounts/{accountId}")
+    public MappingJacksonValue getAllUserAccounts(@PathVariable String userId, @PathVariable String accountId){
+        BankAccount bankAccount = this.accountService.getAccountByUser(userId);
         if(user == null){
             throw new UserNotFoundException("id-" + userId);
         }
 
-        return user.getAccountList();
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
+                .filterOutAllExcept("userId", "firstName",
+                        "lastName","emailAddress","address",
+                        "country","state","phoneNumber","dateTime");
+
+        FilterProvider filters = new SimpleFilterProvider()
+                .addFilter(AppConstants.USER_FILTER, filter);
+
+        MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(resource);
+        mappingJacksonValue.setFilters(filters);
+
+        return mappingJacksonValue;
     }
 
 

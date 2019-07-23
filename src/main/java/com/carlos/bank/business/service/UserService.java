@@ -24,8 +24,9 @@ public class UserService {
     @Autowired
     private AccountRepository accountRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, AccountRepository accountRepository) {
         this.userRepository = userRepository;
+        this.accountRepository = accountRepository;
     }
 
     @Loggable
